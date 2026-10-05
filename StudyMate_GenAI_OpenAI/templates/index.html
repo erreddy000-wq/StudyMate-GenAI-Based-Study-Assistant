@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>StudyMate — Intelligent Study Assistant</title>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div id="toast"></div>
+
+<section id="auth" class="auth">
+  <div class="auth-card">
+    <div class="brand-mark">S</div>
+    <h1>StudyMate</h1>
+    <p class="muted">Your focused study companion.</p>
+    <div class="auth-tabs"><button id="loginTab" class="tab active">Sign in</button><button id="registerTab" class="tab">Create account</button></div>
+    <form id="authForm">
+      <div id="nameWrap" class="field hidden"><label>Name</label><input id="name" placeholder="Your name"></div>
+      <div class="field"><label>Email</label><input id="email" type="email" placeholder="you@example.com" required></div>
+      <div class="field"><label>Password</label><input id="password" type="password" placeholder="••••••••" required></div>
+      <button class="primary wide" type="submit" id="authBtn">Sign in</button>
+    </form>
+    <p id="authMsg" class="error"></p>
+  </div>
+</section>
+
+<section id="app" class="hidden">
+<header class="topbar">
+  <div class="logo"><span>S</span> StudyMate</div>
+  <nav>
+    <button data-page="dashboard" class="nav active">Dashboard</button>
+    <button data-page="practice" class="nav">Practice</button>
+    <button data-page="analytics" class="nav">Analytics</button>
+    <button data-page="chat" class="nav">Study Chat</button>
+  </nav>
+  <div class="profile"><span id="hello"></span><button id="logout" class="ghost">Logout</button></div>
+</header>
+
+<main>
+<section id="dashboard" class="page">
+  <div class="hero">
+    <div><span class="eyebrow">PERSONAL STUDY SPACE</span><h2>Learn with purpose.<br><em>Improve every session.</em></h2><p>Practise concepts, check your understanding and track your progress.</p><button class="primary" data-go="practice">Start Practice →</button></div>
+    <div class="hero-orb"><div class="orb-core">S</div></div>
+  </div>
+  <div class="stats">
+    <div class="stat"><span>Questions Attempted</span><strong id="sAttempts">0</strong></div>
+    <div class="stat"><span>Average Score</span><strong id="sAverage">0.0</strong><small>/ 10</small></div>
+    <div class="stat"><span>Best Score</span><strong id="sBest">0.0</strong><small>/ 10</small></div>
+  </div>
+  <div class="grid2">
+    <div class="card"><div class="card-head"><div><h3>Performance trend</h3><p>Recent practice scores</p></div></div><canvas id="dashChart"></canvas></div>
+    <div class="card insight"><span class="eyebrow">STUDY INSIGHT</span><h3 id="insightTitle">Your journey starts here.</h3><p id="insightText">Complete a practice session to unlock personalised feedback.</p><button class="text-btn" data-go="analytics">View analytics →</button></div>
+  </div>
+</section>
+
+<section id="practice" class="page hidden">
+  <div class="section-title"><div><span class="eyebrow">PRACTICE LAB</span><h2>Build your confidence</h2></div></div>
+  <div class="setup card">
+    <div class="field"><label>Subject</label><select id="subject"></select></div>
+    <div class="field"><label>Topic</label><select id="topic"></select></div>
+    <div class="field"><label>Difficulty</label><select id="difficulty"><option>All</option><option>Easy</option><option>Medium</option><option>Hard</option></select></div>
+    <div class="field"><label>Questions</label><select id="count"><option>5</option><option selected>10</option><option>15</option><option>20</option></select></div>
+    <button class="primary" id="generate">Generate Questions</button>
+  </div>
+  <div id="quiz" class="quiz"></div>
+</section>
+
+<section id="analytics" class="page hidden">
+  <div class="section-title"><div><span class="eyebrow">PROGRESS</span><h2>Know your strengths</h2></div></div>
+  <div class="grid2">
+    <div class="card"><h3>Score trend</h3><canvas id="scoreChart"></canvas></div>
+    <div class="card"><h3>Topic mastery</h3><canvas id="masteryChart"></canvas></div>
+  </div>
+  <div class="card history"><h3>Recent attempts</h3><div id="history"></div></div>
+</section>
+
+<section id="chat" class="page hidden">
+  <div class="section-title"><div><span class="eyebrow">STUDY CHAT</span><h2>Ask about a concept</h2></div></div>
+  <div class="chat-card card">
+    <div id="messages" class="messages"><div class="bubble bot">Hi! Ask me about a programming, database, web or data-structure concept.</div></div>
+    <form id="chatForm" class="chat-form"><input id="chatInput" placeholder="e.g. Explain polymorphism..." autocomplete="off"><button class="primary">Send</button></form>
+  </div>
+</section>
+</main>
+</section>
+<script src="/static/js/script.js"></script>
+</body>
+</html>
